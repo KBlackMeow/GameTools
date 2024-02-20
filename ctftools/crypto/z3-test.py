@@ -17,10 +17,10 @@ s.add(a * 3 + c * 3 == 1)
 s.add(b * 4 + c * 4 == 1)
 s.add(a * n + b * n + c *n == 1)
  
-pr(s.check())
+print(s.check())
 if s.check() == sat:
     m = s.model()
-    pr(m)
+    print(m)
  
 '''
 输出：
