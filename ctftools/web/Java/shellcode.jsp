@@ -17,7 +17,7 @@
             byte[] bytes = new byte[4092];
             out.print("<pre>");
             while ((len = input.read(bytes)) != -1) {
-                out.println(new String(bytes, "GBK"));
+                out.println(new String(bytes, "UTF-8"));
             }
             out.print("</pre>");
         }
