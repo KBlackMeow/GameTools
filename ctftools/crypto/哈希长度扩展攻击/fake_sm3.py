@@ -212,20 +212,20 @@ def test():
     print("="*64)
     print(f"{NewHashValue0}\n{NewHashValue1}\n{NewHashValue2}")    
 
-def sm3_append_attack(hash_value,src_len,append_str_bytes):
-    len1 = src_len
+def sm3_append_attack(original_len,original_hash,append_str_bytes,original):
+    len1 = original_len
     ## 填入原始数据的padding
     padding = getpadding(len1)
-    print("hex(padding):",padding)
-    AppendData = bytes.fromhex(padding)
-    len2=len(AppendData)
+    # print("hex(padding):",padding)
+    append_data = bytes.fromhex(padding)
+    len2=len(append_data)
     ## 增加额外数据
-    AppendData += append_str_bytes
-    print("hex(append_data):",AppendData.hex())
+    append_data += append_str_bytes
+    print("hex(append_data):",append_data.hex())
     ## 扩展后的字符串 原始字符长度  原始字符填充长度
-    NewHashValue = sm3_hash_fake(func.bytes_to_list(AppendData),len1,len2,hash_value)
     print("="*64)
-    print(f"{NewHashValue}")    
+    print(f"{sm3_hash_fake(func.bytes_to_list(append_data),len1,len2,original_hash)}")
+    if not original is None:
+        print("sm3.sm3_hash:",sm3.sm3_hash(func.bytes_to_list(original + append_data)))
 if __name__ == '__main__':
-    # test()
-    sm3_append_attack("6df5e4109b1f8f0194f2cd047423a5bdd33145efe36b4f6fb13d908ff43f486f",64,b"Hello World")
+    sm3_append_attack(64,"6df5e4109b1f8f0194f2cd047423a5bdd33145efe36b4f6fb13d908ff43f486f",b"Hello World",b"B"*64)
