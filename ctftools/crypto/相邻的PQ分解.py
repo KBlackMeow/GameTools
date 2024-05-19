@@ -17,6 +17,10 @@ d = invert(e,(p-1)*(q-1))
 c1 = pow(m1,d,N)
 c2 = pow(m2,d,N)
 ## 求解 多元高次方程
+# 已知 
+# flag1 + flag2 == c1
+# flag1**3 + flag2**3 == c2
+
 from z3 import *
 x = Int('x')
 y = Int('y')
