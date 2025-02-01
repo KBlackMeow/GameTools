@@ -17,11 +17,3 @@ for p_root in p_roots:
        flag = long_to_bytes(int(crt([Integer(p_root), Integer(q_root)], [p, q])))
        if flag.startswith(b"flag{"):
            print(flag.decode())
-
-p_root = mod(c, p)
-q_root = mod(c, q)
-flags = int(crt([Integer(p_root), Integer(q_root)], [p, q])).nth_root(e, all=True)
-for flag in flags:
-    flag = long_to_bytes(flag)
-    if flag.startswith(b"flag{"):
-           print(flag.decode())
